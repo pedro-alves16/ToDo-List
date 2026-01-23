@@ -2,6 +2,8 @@ const inputTarefa = document.getElementById('input-tarefa');
 const botaoAdicionar = document.getElementById('botao-adicionar');
 const listaTarefas = document.querySelector('.lista-tarefas');
 
+//
+
 botaoAdicionar.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -54,8 +56,10 @@ listaTarefas.addEventListener('change', (e) => {
         
         if(e.target.checked){
             li.classList.add('item-text');
+            salvarTarefaNoBanco();
         } else {
             li.classList.remove('item-text');
+            salvarTarefaNoBanco();
         }
 
     }
@@ -80,8 +84,11 @@ function salvarTarefaNoBanco(tarefaCriada) {
 
 
     for (tarefa of arrayLi){
-
-        tarefasDB.push(tarefa.innerText);
+        const div = tarefa.querySelector('div');
+        tarefasDB.push({
+            task: tarefa.innerText,
+            done: div.classList.contains('item-text')
+        });
     }
 
     const tarefasJson = JSON.stringify(tarefasDB);
@@ -89,7 +96,7 @@ function salvarTarefaNoBanco(tarefaCriada) {
 }
 
 function carregartarefasSalvas() {
-    tarefas = localStorage.getItem('tarefa');
+    let tarefas = localStorage.getItem('tarefa');
     const listaTarefasSalvas = JSON.parse(tarefas);
 
     if(tarefas){
@@ -102,8 +109,15 @@ function carregartarefasSalvas() {
     for (tarefa of listaTarefasSalvas){
     const li = document.createElement('li');
     li.classList.add('tarefas-item');
-    li.innerHTML = ` <div> <input type = 'checkbox' class="input-caixa"><span>${tarefa}</span> </div> <button class="botao-apagar"> <img src="trash-2 (1).svg" alt=""> </button>`;
-    
+    li.innerHTML = ` <div> <input type = 'checkbox' class="input-caixa"><span>${tarefa.task}</span> </div> <button class="botao-apagar"> <img src="trash-2 (1).svg" alt=""> </button>`;
+
+    const inputCaixa = li.querySelector('input');
+
+    if(tarefa.done === true){
+        inputCaixa.checked = true;
+        li.classList.add('item-text');
+    }
+    salvarTarefaNoBanco();
     listaTarefas.appendChild(li);
     }
 }
