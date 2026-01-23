@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter';
+    background-color: #F9FAFB;
+}
+
+:root{
+    --cor-titulo: #282c34;
+    --cor-subtitulo: #6b7280;
+    --cor-fundo: #F9FAFB;
+    --card: #ffffff;
+}
+
+.titleDiv{
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.titulo-principal{
+    font-weight: 300;
+    color: var(--cor-titulo);
+}
+
+.subtitulo{
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--cor-subtitulo);
+    margin-top: 0.5rem;
+}
+
+
+.main-div{
+    width: 50%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDiv{
+    margin: 5rem 0 2rem 0;
+    background-color: var(--card);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+}
+
+.inputDiv input{
+    width: 100%;
+    border: 0;
+    background-color: var(--card);
+    border-color: var(--card);
+    font-size: 1rem;
+    margin-left: 1rem;
+    font-weight: 300;
+    color: var(--cor-subtitulo);
+    font-family: 'inter';
+}
+
+input:focus{
+    outline:none;
+}
+
+.tarefasVazias{
+    text-align: center;
+}
+
+.nenhuma-tarefa{
+    font-weight: 300;
+    color: #6b7280;
+}
+
+.subtitulo.footer{
+    font-size: 0.8rem;
+    margin-top: 5rem;
+}
+
+.inputDiv button{
+    border:none;
+    background-color: var(--card);
+    cursor: pointer;
+    color: var(--cor-subtitulo);
+    font-family: 'inter';
+    font-weight: 600;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    width:100%;
+    background-color: var(--card);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color:#6b7280;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-text{
+    text-decoration: line-through;
+}
+
+.botao-apagar{
+    background: none;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+span {
+    margin-left: 1rem;
+}
