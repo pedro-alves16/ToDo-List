@@ -3,11 +3,12 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+
 }
 
 body {
-    box-sizing: border-box;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +42,7 @@ body {
 
 
 .main-div{
-    width: 50%;
+    width: clamp(280px, 92%, 600px);
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -55,6 +56,8 @@ body {
     padding: 1rem;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .inputDiv input{
@@ -67,6 +70,9 @@ body {
     font-weight: 300;
     color: var(--cor-subtitulo);
     font-family: 'inter';
+    flex: 1;
+    min-width: 150px;
+    
 }
 
 input:focus{
@@ -114,6 +120,7 @@ li{
     justify-content:space-between;
     gap: 1rem;
     margin-bottom: 1rem;
+    word-break: break-word;
 }
 
 .item-text{
@@ -129,4 +136,29 @@ li{
 
 span {
     margin-left: 1rem;
+}
+
+.botao_add {
+    border-left: 10px solid red;
+}
+
+@media (max-width: 480px){
+
+    .titleDiv{
+        margin-top: 2rem;
+    }
+
+    .inputDiv{
+        margin: 2rem 0 1.5rem 0;
+    }
+
+    li{
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .botao_add{
+        font-size: 0.85rem;
+    }
+
 }

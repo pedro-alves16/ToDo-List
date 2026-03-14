@@ -31,11 +31,11 @@ inputTarefa.addEventListener('keypress', e => {
     }
 })
 
-function criaTarefa(Conteudotarefa) {
+function criaTarefa(ConteudoTarefa) {
 
     const li = document.createElement('li');
     li.classList.add('tarefas-item');
-    li.innerHTML = ` <div> <input type = 'checkbox' class="input-caixa"><span>${Conteudotarefa}</span> </div> <button class="botao-apagar"> <img src="trash-2 (1).svg" alt=""> </button>`;
+    li.innerHTML = ` <div> <input type = "checkbox" class="input-caixa"><span>${ConteudoTarefa}</span> </div> <button class="botao-apagar"> <img src="/assets/trash-2 (1).svg" alt=""> </button>`;
 
     listaTarefas.appendChild(li);
     lookForTasks();
@@ -43,15 +43,20 @@ function criaTarefa(Conteudotarefa) {
     return li;
 }
 
-listaTarefas.addEventListener('change', (e) => {
-    if (e.target.type === 'checkbox') {
-        const li = e.target.parentElement;
+document.addEventListener('change', (e) => {
 
+    const checkBox = e.target
+
+    if (checkBox.type === 'checkbox') {
+        const li = e.target.closest('li')
         if (e.target.checked) {
             li.classList.add('item-text');
+
             salvarTarefaNoBanco();
+            
         } else {
             li.classList.remove('item-text');
+
             salvarTarefaNoBanco();
             lookForTasks();
         }
@@ -78,14 +83,12 @@ function salvarTarefaNoBanco(tarefaCriada) {
     const tarefasDB = [];
 
 
-    for (tarefa of arrayLi) {
-        const div = tarefa.querySelector('div');
+    for (const tarefa of arrayLi) {
+
         tarefasDB.push({
             task: tarefa.innerText,
-            done: div.classList.contains('item-text')
+            done: tarefa.classList.contains('item-text')
         });
-
-
     }
 
     const tarefasJson = JSON.stringify(tarefasDB);
@@ -97,7 +100,7 @@ function carregartarefasSalvas() {
 
     const listaTarefasSalvas = JSON.parse(tarefas);
 
-    for (tarefa of listaTarefasSalvas) {
+    for (const tarefa of listaTarefasSalvas) {
 
         const li = criaTarefa(tarefa.task);
 
